@@ -24,10 +24,7 @@ Answer1:
     # Write your MySQL query statement below
     # 查询表中某列的第二大的元素
     # OFFSET运用 OFFSET n 代表跳过n个元素
-    # However, this solution will be judged as 'Wrong Answer' 
-    # if there is no such second highest salary since there might be only one record in this table. 
-    # To overcome this issue, we can take this as a temp table.
-    # ------------------------
+    # ---------------------------------
     
     SELECT DISTINCT
         Salary AS SecondHighestSalary
@@ -35,6 +32,20 @@ Answer1:
         Employee
     ORDER BY Salary DESC
     LIMIT 1 OFFSET 1
+    
+    # However, this solution will be judged as 'Wrong Answer' 
+    # if there is no such second highest salary since there might be only one record in this table. 
+    # To overcome this issue, we can take this as a temp table.
+    # ---------------------------------------------------------
+    
+    SELECT
+    (SELECT DISTINCT
+            Salary
+        FROM
+            Employee
+        ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1) AS SecondHighestSalary
+    ;
    
 Answer2:
 ========
