@@ -1,0 +1,55 @@
+Description:
+============
+  Write a SQL query to get the second highest salary from the Employee table.
+
+    +----+--------+
+    | Id | Salary |
+    +----+--------+
+    | 1  | 100    |
+    | 2  | 200    |
+    | 3  | 300    |
+    +----+--------+
+    
+  For example, given the above Employee table, the query should return 200 as the second highest salary. 
+  If there is no second highest salary, then the query should return null.
+
+    +---------------------+
+    | SecondHighestSalary |
+    +---------------------+
+    | 200                 |
+    +---------------------+
+    
+Answer1:
+========
+    # Write your MySQL query statement below
+    # 查询表中某列的第二大的元素
+    # OFFSET运用 OFFSET n 代表跳过n个元素
+    # However, this solution will be judged as 'Wrong Answer' 
+    # if there is no such second highest salary since there might be only one record in this table. 
+    # To overcome this issue, we can take this as a temp table.
+    # ------------------------
+    
+    SELECT DISTINCT
+        Salary AS SecondHighestSalary
+    FROM
+        Employee
+    ORDER BY Salary DESC
+    LIMIT 1 OFFSET 1
+   
+Answer2:
+========
+    # Write your MySQL query statement below
+    # 查询表中某列的第二大的元素
+    # IFNULL运用 IFNULL(A,B) 如果A部位NULL，返回A; 反之，返回B
+    # Another way to solve the 'NULL' problem is to use IFNULL funtion as below.
+    # ------------------------
+    
+    SELECT
+    IFNULL(
+      (SELECT DISTINCT Salary
+       FROM Employee
+       ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1),
+    NULL) AS SecondHighestSalary
+    
+    
