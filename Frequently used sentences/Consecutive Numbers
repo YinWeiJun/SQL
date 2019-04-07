@@ -1,5 +1,6 @@
 Description:
 ============
+    查询连续出现N次的情况
     Write a SQL query to find all numbers that appear at least three times consecutively.
 
     +----+-----+
