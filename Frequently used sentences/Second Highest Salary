@@ -1,5 +1,6 @@
 Description:
 ============
+  查询表中第二大的数值
   Write a SQL query to get the second highest salary from the Employee table.
 
     +----+--------+
