@@ -1,5 +1,6 @@
 Description:
 ============
+    查询第N大的值
     Write a SQL query to get the nth highest salary from the Employee table.
 
     +----+--------+
